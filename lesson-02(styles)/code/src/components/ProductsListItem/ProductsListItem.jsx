@@ -6,7 +6,9 @@ const ProductsListItem = (props) => {
   //    model, price, currency
   return (
     <li className="product">
-      <img className="image" src={url} alt="" />
+      <div className="img-wrapper">
+        <img className="image" src={url} alt="" />
+      </div>
       <div className="descr">
         <h3 className="model">{model}</h3>
 

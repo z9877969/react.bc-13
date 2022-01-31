@@ -8,9 +8,13 @@
     <link rel="stylesheet" href="./FIlter.css" />
   </head>
   <body>
-    <ul class="filter">
+    <div class="filter">
+      <h2 class="filter-title">
+        Производитель
+      </h2>
+    
+    <ul class="filter-list">
       <li class="filter-item">
-        <label class="filter-label" for="apple">Apple</label>
         <input
           class="filter-input"
           name="filter"
@@ -18,9 +22,11 @@
           type="checkbox"
           id="apple"
         />
+        <label class="filter-label" for="apple">
+          <span class="filter-label-content"> Apple </span>
+        </label>
       </li>
       <li class="filter-item">
-        <label class="filter-label" for="xiaomi"> </label>
         <input
           class="filter-input"
           name="filter"
@@ -28,7 +34,11 @@
           type="checkbox"
           id="xiaomi"
         />
+        <label class="filter-label" for="xiaomi">
+          <span class="filter-label-content"> Xiaomi </span>
+        </label>
       </li>
     </ul>
+  </div>
   </body>
 </html>
