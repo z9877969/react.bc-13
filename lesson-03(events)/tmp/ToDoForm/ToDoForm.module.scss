@@ -1,0 +1,40 @@
+.form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 15px;
+  
+    & > .label {
+      margin-bottom: 10px;
+    }
+  }
+  
+  .labelWrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: -10px; 
+  
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+  
+  .label {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .radio,
+  .checkbox {
+    align-items: center;
+    margin-bottom: 10px;
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+  
+  .checkbox {
+    width: 45%;
+  
+  }

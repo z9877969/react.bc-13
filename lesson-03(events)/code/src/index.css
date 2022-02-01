@@ -28,6 +28,10 @@ li {
   margin: 0;
 }
 
+button:active {
+  transform: scale(0.95);
+}
+
 .button {
   background-color: red;
   transform: scale(1);

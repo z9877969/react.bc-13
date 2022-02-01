@@ -11,10 +11,10 @@ const Header = () => {
   return (
     <HeaderStyled>
       <img className="header-logo" src={logo} alt="header logo" />
-      <NavStyled>
+      {/* <NavStyled>
         <button type="button">Shop</button>
-        <button type="button">Todo</button>
-      </NavStyled>
+        <button type="button">Counter</button>
+      </NavStyled> */}
       <UserInfoContainer>
         <span className="header-user-avatar">U</span>
         <span className="header-user-email">user@mail.com</span>

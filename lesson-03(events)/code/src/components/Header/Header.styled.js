@@ -13,29 +13,29 @@ export const HeaderStyled = styled.header`
   }
 `;
 
-export const NavStyled = styled.nav`
-  display: inline-block;
-  margin: 0 auto;
+// export const NavStyled = styled.nav`
+//   display: inline-block;
+//   margin: 0 auto;
 
-  button {
-    padding: 10px 20px;
-    font-size: 24px;
-    background: none;
-    border: 1px solid #212121;
+//   button {
+//     padding: 10px 20px;
+//     font-size: 24px;
+//     background: none;
+//     border: 1px solid #212121;
 
-    :not(:last-child) {
-      margin-right: 10px;
-    }
-    :active {
-      transform: scale(0.95);
-    }
-  }
-`;
+//     :not(:last-child) {
+//       margin-right: 10px;
+//     }
+//     :active {
+//       transform: scale(0.95);
+//     }
+//   }
+// `;
 
 export const UserInfoContainer = styled.div`
   display: flex;
   align-items: center;
-  /* margin-left: auto; */
+  margin-left: auto;
 
   .header-user-avatar {
     display: flex;
