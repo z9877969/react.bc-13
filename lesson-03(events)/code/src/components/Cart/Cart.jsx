@@ -1,12 +1,13 @@
 import s from "./Cart.module.scss";
 import sprite from "../../assets/icons/sprite.svg";
 
-console.log("sprite :>> ", sprite);
-
 const Cart = () => {
   return (
     <div className={s["cart"]}>
-      <button className={s["cart-btn-close"]} type="button">
+      <button
+        className={s["cart-btn-close"]}
+        type="button"
+      >
         <svg className={s["cart-icon-close"]}>
           <use href={sprite + "#icon-cross"}></use>
         </svg>

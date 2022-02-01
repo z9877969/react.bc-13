@@ -2,10 +2,12 @@
   {
     "id": 1,
     "url": "https://content.rozetka.com.ua/goods/images/big/37406402.jpg",
+    "price": "21999",
     "currency": "UAH",
     "model": "iPhone 11",
     "type": "apple",
-    "isSold": false
+    "isSold": false,
+    "isPromo": true
   },
   {
     "id": 2,
@@ -14,7 +16,8 @@
     "currency": "UAH",
     "model": "iPhone 13",
     "type": "apple",
-    "isSold": false
+    "isSold": false,
+    "isPromo": false
   },
   {
     "id": 3,
@@ -23,7 +26,8 @@
     "currency": "UAH",
     "model": "Samsung Galaxy S21",
     "type": "samsung",
-    "isSold": false
+    "isSold": false,
+    "isPromo": true
   },
   {
     "id": 4,
@@ -32,7 +36,8 @@
     "currency": "UAH",
     "model": "Xiaomi Redmi 9A",
     "type": "xiaomi",
-    "isSold": false
+    "isSold": false,
+    "isPromo": false
   },
   {
     "id": 5,
@@ -41,7 +46,8 @@
     "currency": "UAH",
     "model": "ZTE RedMagic",
     "type": "zte",
-    "isSold": true
+    "isSold": true,
+    "isPromo": false
   },
   {
     "id": 6,
@@ -50,7 +56,8 @@
     "currency": "UAH",
     "model": "Samsung Galaxy A32",
     "type": "samsung",
-    "isSold": false
+    "isSold": false,
+    "isPromo": true
   },
   {
     "id": 7,
@@ -59,7 +66,8 @@
     "currency": "UAH",
     "model": "Samsung Galaxy S21",
     "type": "samsung",
-    "isSold": false
+    "isSold": false,
+    "isPromo": false
   },
   {
     "id": 8,
@@ -68,7 +76,8 @@
     "currency": "UAH",
     "model": "ZTE Blade A51",
     "type": "zte",
-    "isSold": false
+    "isSold": false,
+    "isPromo": false
   },
   {
     "id": 9,
@@ -77,7 +86,8 @@
     "currency": "UAH",
     "model": "Huawei P Smart ",
     "type": "huawei",
-    "isSold": true
+    "isSold": true,
+    "isPromo": false
   },
   {
     "id": 10,
@@ -86,7 +96,8 @@
     "currency": "UAH",
     "model": "Apple iPhone 11 64GB",
     "type": "apple",
-    "isSold": false
+    "isSold": false,
+    "isPromo": false
   },
   {
     "id": 11,
@@ -95,7 +106,8 @@
     "currency": "UAH",
     "model": "ZTE Nubia Play 5G",
     "type": "zte",
-    "isSold": false
+    "isSold": false,
+    "isPromo": false
   },
   {
     "id": 12,
@@ -104,6 +116,7 @@
     "currency": "UAH",
     "model": "Xiaomi Redmi 9C",
     "type": "zte",
-    "isSold": false
+    "isSold": false,
+    "isPromo": false
   }
 ]

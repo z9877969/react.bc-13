@@ -3,11 +3,11 @@ import "./ProductsListItem.css";
 import { BtnBuyStyled } from "./ProductsListItem.styled";
 import image from "../../assets/img/no-image.png";
 
-const ProductsListItem = ({ url, model, price, currency, isSold }) => {
+const ProductsListItem = ({ url, model, price, currency, isSold, isPromo }) => {
   return (
     <li className="product">
       <div className="img-wrapper">
-        <p className="product-status">Акция</p>
+        {isPromo && <p className="product-status">Акция</p>}
         <img className="image" src={url} alt="" />
       </div>
       <div className="descr">

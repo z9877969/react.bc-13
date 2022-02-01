@@ -1,29 +1,29 @@
 import PropTypes from "prop-types";
-import styles from "./Filter.module.css";
+import s from "./Filter.module.css";
 
 const Filter = ({ filterOptions }) => {
   return (
-    <div className={styles.filter}>
-      <h2 className={styles.filterTitle}>Производитель</h2>
-      <ul className={styles["filter-list"]}>
+    <aside className={s.filter}>
+      <h2 className={s.filterTitle}>Производитель</h2>
+      <ul className={s.list}>
         {filterOptions.map(({ id, title }) => {
           return (
-            <li key={id} className={styles["filter-item"]}>
+            <li key={id} className={s.item}>
               <input
-                className={styles["filter-input"]}
+                className={s.input}
                 name="filter"
                 value={id}
                 type="checkbox"
                 id={id}
               />
-              <label className={styles["filter-label"]} for={id}>
-                <span className={styles["filter-label-content"]}>{title}</span>
+              <label className={s.label} htmlFor={id}>
+                <span className={s.labelContent}>{title}</span>
               </label>
             </li>
           );
         })}
       </ul>
-    </div>
+    </aside>
   );
 };
 

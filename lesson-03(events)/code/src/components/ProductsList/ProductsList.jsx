@@ -19,6 +19,7 @@ const ProductsList = () => {
               price={el.price}
               currency={el.currency}
               isSold={el.isSold}
+              isPromo={el.isPromo}
             />
           );
         })}
