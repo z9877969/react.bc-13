@@ -1,12 +1,13 @@
 import PropTypes from "prop-types";
 import "./ProductsListItem.css";
+import { BtnBuyStyled } from "./ProductsListItem.styled";
+import image from "../../assets/img/no-image.png";
 
-const ProductsListItem = (props) => {
-  const { url, model, price, currency } = props;
-  //    model, price, currency
+const ProductsListItem = ({ url, model, price, currency, isSold }) => {
   return (
     <li className="product">
       <div className="img-wrapper">
+        <p className="product-status">Акция</p>
         <img className="image" src={url} alt="" />
       </div>
       <div className="descr">
@@ -21,22 +22,23 @@ const ProductsListItem = (props) => {
           <span>Price is waiting</span>
         )}
       </div>
-      <button className="btn-bye" type="button">
-        Купить
-      </button>
+      <BtnBuyStyled type="button" isSold={isSold}>
+        {isSold ? "Продано" : "Купить"}
+        <span className="span">Span</span>
+      </BtnBuyStyled>
     </li>
   );
 };
 
 ProductsListItem.propTypes = {
-  url: PropTypes.string.isRequired,
+  url: PropTypes.string,
   model: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   currency: PropTypes.string.isRequired,
 };
 
 ProductsListItem.defaultProps = {
-  price: "no price",
+  url: image,
 };
 
 export default ProductsListItem;

@@ -1,9 +1,15 @@
+import { HeaderStyled, UserInfoContainer } from "./Header.styled";
+import logo from "../../assets/img/logo.png";
+
 const Header = () => {
   return (
-    <header>
-      <span>logo</span>
-      <span>UserName</span>
-    </header>
+    <HeaderStyled>
+      <img className="header-logo" src={logo} alt="header logo" />
+      <UserInfoContainer>
+        <span className="header-user-avatar">U</span>
+        <span className="header-user-email">user@mail.com</span>
+      </UserInfoContainer>
+    </HeaderStyled>
   );
 };
 

@@ -7,11 +7,23 @@
   margin: 0;
   padding: 5px;
   background-color: #212121;
+  overflow: hidden;
 }
 
 .img-wrapper {
   height: 300px;
   background-color: antiquewhite;
+}
+
+.product-status {
+  position: relative;
+  display: inline-block;
+  right: -200px;
+  width: 100px;
+  font-size: 18px;
+  background-color: orange;
+  transform: rotate(45deg);
+  text-align: center;
 }
 
 .image {
@@ -26,15 +38,14 @@
 }
 
 .btn-bye {
-    font-size: 24px;
-    padding: 10px 20px;
-    border: none;
-    background-color: burlywood;
-    color: rgb(58, 44, 44);
-    border-radius: 3px;
+  font-size: 24px;
+  padding: 10px 20px;
+  border: none;
+  background-color: burlywood;
+  color: rgb(58, 44, 44);
+  border-radius: 3px;
 }
 
 .btn-bye:active {
-    transform: scale(0.95);
+  transform: scale(0.95);
 }
-
