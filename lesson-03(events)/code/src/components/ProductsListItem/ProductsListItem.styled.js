@@ -7,8 +7,4 @@ export const BtnBuyStyled = styled.button`
   background-color: burlywood;
   color: ${(props) => (props.isSold ? "red" : "rgb(58, 44, 44)")};
   border-radius: 3px;
-
-  /* .span {
-    color: green;
-  } */
 `;

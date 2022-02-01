@@ -22,9 +22,8 @@ const ProductsListItem = ({ url, model, price, currency, isSold }) => {
           <span>Price is waiting</span>
         )}
       </div>
-      <BtnBuyStyled type="button" isSold={isSold}>
+      <BtnBuyStyled type="button" className="button" isSold={isSold}>
         {isSold ? "Продано" : "Купить"}
-        <span className="span">Span</span>
       </BtnBuyStyled>
     </li>
   );
