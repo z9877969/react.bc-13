@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import ProductsListItem from "../ProductsListItem/ProductsListItem";
 import "./ProductsList.css";
 import products from "../../data/products.json";
-import { ContainerStyled } from "../shared/Container.styled";
+// import { ContainerStyled } from "../shared/Container.styled";
 
-const ProductsList = () => {
+const ProductsList = ({ addToCart }) => {
   return (
     <section>
       {/* <ContainerStyled> */}
@@ -20,6 +21,7 @@ const ProductsList = () => {
               currency={el.currency}
               isSold={el.isSold}
               isPromo={el.isPromo}
+              addToCart={addToCart}
             />
           );
         })}
@@ -29,21 +31,8 @@ const ProductsList = () => {
   );
 };
 
+ProductsListItem.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+};
+
 export default ProductsList;
-
-// const ListItem = (url, model, price, currency) => {
-//   <>
-//     <img src={url} alt="" />
-//     <h1>{model}</h1>
-//     <p>{price}</p>
-//   </>;
-// };
-
-// ListItem("PhoneModel", "https://.....", "20000", "UAH");
-
-// ProductsListItem({
-//   url: "https://.....",
-//   model: "PhoneModel",
-//   price: "20000",
-//   currency: "UAH",
-// });

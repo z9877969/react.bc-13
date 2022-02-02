@@ -1,9 +1,7 @@
-0) props object vs params list
-props not required = defaultProps
+1) statefull vs stateless
+2) counter
+3) open cart
+4) add product vulue
+5) add product to cart
 
-1) install modern-normalize
-2) not classic css vs BEM
-3) modules styles vs BEM
-4) composes
-5) sass modules
-6) styles-component
+6) filter

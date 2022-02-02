@@ -3,7 +3,15 @@ import "./ProductsListItem.css";
 import { BtnBuyStyled } from "./ProductsListItem.styled";
 import image from "../../assets/img/no-image.png";
 
-const ProductsListItem = ({ url, model, price, currency, isSold, isPromo }) => {
+const ProductsListItem = ({
+  url,
+  model,
+  price,
+  currency,
+  isSold,
+  isPromo,
+  addToCart,
+}) => {
   return (
     <li className="product">
       <div className="img-wrapper">
@@ -22,7 +30,12 @@ const ProductsListItem = ({ url, model, price, currency, isSold, isPromo }) => {
           <span>Price is waiting</span>
         )}
       </div>
-      <BtnBuyStyled type="button" className="button" isSold={isSold}>
+      <BtnBuyStyled
+        type="button"
+        className="button"
+        isSold={isSold}
+        onClick={() => addToCart({ url, model, price, currency })}
+      >
         {isSold ? "Продано" : "Купить"}
       </BtnBuyStyled>
     </li>
@@ -34,6 +47,7 @@ ProductsListItem.propTypes = {
   model: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
   currency: PropTypes.string.isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 ProductsListItem.defaultProps = {
