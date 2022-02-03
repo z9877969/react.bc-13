@@ -32,7 +32,7 @@
   color: rgb(1, 29, 29);
   margin-bottom: 10px;
   input {
-    // @include visually-hidden;
+    @include visually-hidden;
   }
 }
 
