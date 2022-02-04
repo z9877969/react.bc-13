@@ -1,0 +1,4 @@
+1) filter -> checkbox
+2) life-cycles methode - https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+3) localStorage
+
