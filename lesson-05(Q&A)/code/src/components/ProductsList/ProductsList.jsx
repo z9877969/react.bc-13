@@ -1,19 +1,35 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import ProductsListItem from "../ProductsListItem/ProductsListItem";
 import "./ProductsList.css";
 import products from "../../data/products.json";
-// import { ContainerStyled } from "../shared/Container.styled";
 
-const ProductsList = ({ addToCart }) => {
+const ProductsList = ({ addToCart, filterStatus }) => {
+  const getFilteredProducts = () => {
+    if (Object.values(filterStatus).every((el) => el === false))
+      return products;
+    return products.filter((el) => filterStatus[el.type] === true); // el.type
+  };
+
+  const filteredProducts = getFilteredProducts();
+
+  const sortProducts = filteredProducts.sort((a, b) => {
+    const A = a.model.toLocaleLowerCase();
+    const B = b.model.toLocaleLowerCase();
+    if (A > B) {
+      return 1;
+    }
+    if (A < B) {
+      return -1;
+    }
+    return 0;
+  });
+
   return (
     <section>
-      {/* <ContainerStyled> */}
       <ul className="products">
-        {products.map((el) => {
+        {sortProducts.map((el) => {
           return (
             <ProductsListItem
-              // {...qwe}
-              // id={id}
               key={el.id}
               url={el.url}
               model={el.model}
@@ -26,7 +42,6 @@ const ProductsList = ({ addToCart }) => {
           );
         })}
       </ul>
-      {/* </ContainerStyled> */}
     </section>
   );
 };

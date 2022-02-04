@@ -115,7 +115,7 @@
     "price": "3899",
     "currency": "UAH",
     "model": "Xiaomi Redmi 9C",
-    "type": "zte",
+    "type": "xiaomi",
     "isSold": false,
     "isPromo": false
   }

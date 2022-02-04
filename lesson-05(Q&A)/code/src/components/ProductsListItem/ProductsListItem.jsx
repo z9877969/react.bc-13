@@ -34,7 +34,9 @@ const ProductsListItem = ({
         type="button"
         className="button"
         isSold={isSold}
-        onClick={() => addToCart({ url, model, price, currency })}
+        onClick={() => {
+          addToCart({ url, model, price, currency });
+        }}
       >
         {isSold ? "Продано" : "Купить"}
       </BtnBuyStyled>

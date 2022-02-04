@@ -1,7 +1,9 @@
 import PropTypes from "prop-types";
 import s from "./Filter.module.css";
 
-const Filter = ({ filterOptions }) => {
+// filterStatus -> {apple: false, zte: false, ...}
+
+const Filter = ({ filterOptions, filterStatus, changeFilterStatus }) => {
   return (
     <aside className={s.filter}>
       <h2 className={s.filterTitle}>Производитель</h2>
@@ -15,6 +17,8 @@ const Filter = ({ filterOptions }) => {
                 value={id}
                 type="checkbox"
                 id={id}
+                checked={filterStatus[id]} // id -> apple || zte ||
+                onChange={changeFilterStatus}
               />
               <label className={s.label} htmlFor={id}>
                 <span className={s.labelContent}>{title}</span>
@@ -37,3 +41,15 @@ Filter.propTypes = {
 };
 
 export default Filter;
+
+// const obj = {
+//   a: 654
+// }
+
+// obj.a
+
+// obj["a"]
+
+// const key = "a"
+
+// obj[key]
