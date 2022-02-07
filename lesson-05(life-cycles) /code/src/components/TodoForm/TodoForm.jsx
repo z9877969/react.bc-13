@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { Component, PureComponent } from "react";
 import shortid from "shortid";
 import s from "./TodoForm.module.scss";
 
@@ -9,23 +9,55 @@ export const priority = {
   DEF: "",
 };
 
-class ToDoForm extends Component {
+const getHardCalc = () => {
+  let n = 0;
+  while (n < 1000000000) {
+    n++;
+  }
+};
+
+class ToDoForm extends PureComponent {
   state = {
     title: "",
     descr: "",
     priority: "",
   };
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    console.log("nextProps :>> ", nextProps);
-    console.log("prevState :>> ", prevState);
-    // if (nextProps.priority === "all") return null;
-    if (nextProps.priority !== "all")
-      return {
-        ...prevState,
-        priority: nextProps.priority,
-      };
+  // static getDerivedStateFromProps(nextProps, prevState) {
+  //   console.log("nextProps :>> ", nextProps);
+  //   console.log("prevState :>> ", prevState);
+  //   // if (nextProps.priority === "all") return null;
+  //   if (nextProps.priority !== "all")
+  //     return {
+  //       priority: nextProps.priority,
+  //     };
+  // }
+
+  componentDidMount() {
+    console.log("CDM");
   }
+
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (
+  //     // nextProps.addTodo === this.props.addTodo &&
+  //     // nextProps.priority === this.props.priority &&
+  //     JSON.stringify(nextProps) === JSON.stringify(this.props) &&
+  //     nextState === this.state
+  //   ) {
+  //     console.log("NOT_UPDATE");
+  //     return false;
+  //   }
+  //   return true;
+  // }
+
+  componentDidUpdate(prevProps, prevState) {
+    // console.log("CDU");
+    // if (prevProps.priority !== this.props.priority) {
+    //   this.setState({ priority: this.props.priority });
+    // }
+  }
+
+  
 
   handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,6 +75,8 @@ class ToDoForm extends Component {
   };
 
   render() {
+    console.log("RENDER_FORM");
+    // getHardCalc();
     return (
       <form className={s.form} onSubmit={this.handleSubmit}>
         <label className={s.label}>

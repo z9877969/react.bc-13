@@ -6,12 +6,51 @@ import s from "./Todo.module.scss";
 
 class Todo extends Component {
   state = {
-    todos: todosDB,
+    todos: [], // []
     priority: "all",
   };
 
+  componentDidMount() {
+    const todosFromLS = JSON.parse(localStorage.getItem("todos")) || [];
+    this.setState({ todos: todosFromLS });
+  }
+
+  getSnapshotBeforeUpdate() {
+    return document.body.scrollHeight;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log("snapshot :>> ", snapshot);
+    if (prevState.todos !== this.state.todos) {
+      console.log("UP_Todos");
+      localStorage.setItem("todos", JSON.stringify(this.state.todos));
+    }
+    if (prevState.todos !== this.state.todos) {
+      window.scrollTo({
+        top: snapshot - 200,
+        behavior: "smooth",
+      });
+    }
+  }
+
   addTodo = (todo) => {
-    this.setState((prev) => ({ todos: [...prev.todos, todo] }));
+    this.setState((prev) => ({
+      todos: [
+        ...prev.todos,
+        todo,
+        // todo,
+        // todo,
+        // todo,
+        // todo,
+        // todo,
+        // todo,
+        // todo,
+        // todo,
+        // todo,
+        // todo,
+        // todo,
+      ],
+    }));
   };
 
   changeIsDone = (id) => {
@@ -38,6 +77,7 @@ class Todo extends Component {
     }));
 
   render() {
+    console.log("RENDER_TODO");
     const { priority } = this.state;
     return (
       <div className={s["container"]}>
@@ -57,6 +97,19 @@ class Todo extends Component {
           changeIsDone={this.changeIsDone}
           removeTodo={this.removeTodo}
         />
+        {/* <button
+          type="button"
+          onClick={() =>
+            this.addTodo({
+              title: "Title",
+              descr: "descr",
+              priority: "low",
+              id: "987987",
+            })
+          }
+        >
+          Click
+        </button> */}
       </div>
     );
   }
