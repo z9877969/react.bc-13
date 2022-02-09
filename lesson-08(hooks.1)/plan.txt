@@ -1,0 +1,7 @@
+1) Counter -> useState, useEffect
+2) Todo -> useState, useEffect
+3) TodoItem -> useEffect(return)
+4) TodoForm -> memo
+5) TodoItem -> setInterval = useMemo
+
+
