@@ -20,9 +20,7 @@ class Todo extends Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    console.log("snapshot :>> ", snapshot);
     if (prevState.todos !== this.state.todos) {
-      console.log("UP_Todos");
       localStorage.setItem("todos", JSON.stringify(this.state.todos));
     }
     if (prevState.todos !== this.state.todos) {

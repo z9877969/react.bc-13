@@ -1,7 +1,6 @@
-1) Counter -> useState, useEffect
+1) Counter -> useState
 2) Todo -> useState, useEffect
-3) TodoItem -> useEffect(return)
-4) TodoForm -> memo
-5) TodoItem -> setInterval = useMemo
-
-
+3) TodoItem -> cwu useEffect(return)
+4) TodoItem -> setInterval = useRef
+5) Todo -> getSnapshot = useRef
+5) TodoForm -> memo
