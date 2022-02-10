@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Title-1",
+    "descr": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolor incidunt dolorem consequatur cumque rem?",
+    "priority": "low",
+    "isDone": false
+  },
+  {
+    "id": 2,
+    "title": "Title-2",
+    "descr": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolor incidunt dolorem consequatur cumque rem?",
+    "priority": "medium",
+    "isDone": false
+  },
+  {
+    "id": 3,
+    "title": "Title-3",
+    "descr": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolor incidunt dolorem consequatur cumque rem?",
+    "priority": "medium",
+    "isDone": false
+  },
+  {
+    "id": 4,
+    "title": "Title-4",
+    "descr": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis dolor incidunt dolorem consequatur cumque rem?",
+    "priority": "high",
+    "isDone": false
+  }
+]
