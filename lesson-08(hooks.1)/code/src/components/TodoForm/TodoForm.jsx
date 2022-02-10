@@ -1,8 +1,8 @@
-import { Component, PureComponent } from "react";
+import { useState } from "react";
 import shortid from "shortid";
 import s from "./TodoForm.module.scss";
 
-export const priority = {
+export const priorityOptions = {
   LOW: "low",
   MEDIUM: "medium",
   HIGH: "high",
@@ -16,101 +16,139 @@ const getHardCalc = () => {
   }
 };
 
-class ToDoForm extends PureComponent {
-  state = {
+const ToDoForm = ({ addTodo }) => {
+  // state = {
+  //   title: "",
+  //   descr: "",
+  //   priority: "",
+  // };
+
+  // const [title, setTitle] = useState("");
+  // const [descr, setDescr] = useState("");
+  // const [priority, setPriority] = useState("");
+  const [form, setForm] = useState({
     title: "",
     descr: "",
     priority: "",
-  };  
+    // check: {
+    //   prop1: false,
+    //   prop2: false
+    // }
+  });
 
-  handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    // this.setState({ [name]: value });
+    // switch (name) {
+    //   case "title":
+    //     setTitle(value);
+    //     break;
+    //   case "descr":
+    //     setDescr(value);
+    //     break;
+    //   case "priority":
+    //     setPriority(value);
+    //     break;
+    //   default:
+    //     return;
+    // }
+    // if(type === "checkbox"){
+    //   setForm(prev => ({...prev, [name]: {
+    //     ...prev[name],
+    //     [value]: checked
+    //   }}))
+    //   return
+    // }
+
+    setForm((prevForm) => ({ ...prevForm, [name]: value }));
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const newTodo = {
-      ...this.state,
+      // title,
+      // descr,
+      // priority,
+      ...form,
       isDone: false,
       id: shortid.generate(),
     };
-    this.props.addTodo(newTodo);
+    addTodo(newTodo);
   };
 
-  render() {
-    return (
-      <form className={s.form} onSubmit={this.handleSubmit}>
-        <label className={s.label}>
-          <span> Title </span>
+  const { title, descr, priority } = form;
+
+  return (
+    <form className={s.form} onSubmit={handleSubmit}>
+      <label className={s.label}>
+        <span> Title </span>
+        <input
+          className={s.input}
+          onChange={handleChange}
+          type="text"
+          name="title"
+          value={title}
+        />
+      </label>
+      <label className={s.label}>
+        <span> Description </span>
+        <textarea
+          className={`${s.input} ${s.textarea}`}
+          type="text"
+          name="descr"
+          onChange={handleChange}
+          value={descr}
+        />
+      </label>
+      <div className={s.labelWrapper}>
+        <div>
           <input
+            id="low"
             className={s.input}
-            onChange={this.handleChange}
-            type="text"
-            name="title"
-            value={this.state.title}
+            type="radio"
+            name="priority"
+            value={priorityOptions.LOW}
+            onChange={handleChange}
+            checked={priorityOptions.LOW === priority}
           />
-        </label>
-        <label className={s.label}>
-          <span> Description </span>
-          <textarea
-            className={`${s.input} ${s.textarea}`}
-            type="text"
-            name="descr"
-            onChange={this.handleChange}
-            value={this.state.descr}
-          />
-        </label>
-        <div className={s.labelWrapper}>
-          <div>
-            <input
-              id="low"
-              className={s.input}
-              type="radio"
-              name="priority"
-              value={priority.LOW}
-              onChange={this.handleChange}
-              checked={priority.LOW === this.state.priority}
-            />
-            <label htmlFor="low" className={`${s.label} ${s.radio}`}>
-              <span> Low </span>
-            </label>
-          </div>
-          <div>
-            <input
-              id="medium"
-              className={s.input}
-              type="radio"
-              name="priority"
-              value={priority.MEDIUM}
-              onChange={this.handleChange}
-              checked={priority.MEDIUM === this.state.priority}
-            />
-            <label htmlFor="medium" className={`${s.label} ${s.radio}`}>
-              <span> Medium </span>
-            </label>
-          </div>
-          <div>
-            <input
-              id="high"
-              className={s.input}
-              type="radio"
-              name="priority"
-              value={priority.HIGH}
-              onChange={this.handleChange}
-              checked={priority.HIGH === this.state.priority}
-            />
-            <label htmlFor="high" className={`${s.label} ${s.radio}`}>
-              <span> High </span>
-            </label>
-          </div>
+          <label htmlFor="low" className={`${s.label} ${s.radio}`}>
+            <span> Low </span>
+          </label>
         </div>
-        <button className={s.submit} type="submit">
-          Ok
-        </button>
-      </form>
-    );
-  }
-}
+        <div>
+          <input
+            id="medium"
+            className={s.input}
+            type="radio"
+            name="priority"
+            value={priorityOptions.MEDIUM}
+            onChange={handleChange}
+            checked={priorityOptions.MEDIUM === priority}
+          />
+          <label htmlFor="medium" className={`${s.label} ${s.radio}`}>
+            <span> Medium </span>
+          </label>
+        </div>
+        <div>
+          <input
+            id="high"
+            className={s.input}
+            type="radio"
+            name="priority"
+            value={priorityOptions.HIGH}
+            onChange={handleChange}
+            checked={priorityOptions.HIGH === priority}
+          />
+          <label htmlFor="high" className={`${s.label} ${s.radio}`}>
+            <span> High </span>
+          </label>
+        </div>
+      </div>
+      <button className={s.submit} type="submit">
+        Ok
+      </button>
+    </form>
+  );
+};
 
 export default ToDoForm;

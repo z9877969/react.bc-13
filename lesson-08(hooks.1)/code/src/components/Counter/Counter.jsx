@@ -1,44 +1,48 @@
-import { Component } from "react";
+import { Component, useState } from "react";
 import s from "./Counter.module.css";
 
 const CounterTable = ({ counter }) => <p className={s.count}>{counter}</p>;
 
-class Counter extends Component {
-  state = {
-    counter: 100,
+const Counter = () => {
+  // state = {
+  //   counter: 100,
+  // };
+
+  const [counter, setCounter] = useState(100);
+
+  const plus = () => {
+    // this.setState((prevState) => ({ counter: prevState.counter + 10 }));
+    setCounter((prevCounter) => prevCounter + 10);
   };
 
-  plus = () => {
-    this.setState((prevState) => ({ counter: prevState.counter + 10 }));
+  const minus = () => {
+    // this.setState((prevState) => ({
+    //   counter: prevState.counter - 15,
+    // }));
+    setCounter((prevCounter) => prevCounter - 15);
   };
 
-  minus = () => {
-    this.setState((prevState) => ({
-      counter: prevState.counter - 15,
-    }));
-  };
+  const reset = () => setCounter(100);
 
-  reset = () => this.setState({ counter: 100 });
-
-  render() {
-    return (
-      <div className={s.container}>
-        <h1 className={s.title}>Counter</h1>
-        <CounterTable counter={this.state.counter} />
-        <div className={s.btnsWrapper}>
-          <button onClick={this.minus} className={s.btn} type="button">
-            -
-          </button>
-          <button onClick={this.reset} className={s.btn} type="button">
-            100
-          </button>
-          <button onClick={this.plus} className={s.btn} type="button">
-            +
-          </button>
-        </div>
+  return (
+    <div className={s.container}>
+      <h1 className={s.title}>Counter</h1>
+      <CounterTable counter={counter} />
+      <div className={s.btnsWrapper}>
+        <button onClick={minus} className={s.btn} type="button">
+          -
+        </button>
+        <button onClick={reset} className={s.btn} type="button">
+          100
+        </button>
+        <button onClick={plus} className={s.btn} type="button">
+          +
+        </button>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Counter;
+
+// useState("") // -> [prop, setProp] -> setProp("qwe") / setState({prop: "654"})
