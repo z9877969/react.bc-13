@@ -1,7 +1,7 @@
 import ToDoItem from "../TodoItem/TodoItem";
 import s from "./TodoList.module.scss";
 
-const ToDoList = ({ items, changeIsDone, removeTodo }) => {
+const ToDoList = ({ items }) => {
   return (
     <ul className={s.list}>
       {items.map(({ title, descr, id, priority, isDone }) => (
@@ -12,8 +12,6 @@ const ToDoList = ({ items, changeIsDone, removeTodo }) => {
           descr={descr}
           priority={priority}
           isDone={isDone}
-          changeIsDone={changeIsDone}
-          removeTodo={removeTodo}
         />
       ))}
     </ul>

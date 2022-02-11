@@ -1,33 +1,42 @@
+import { useContext, useEffect, useState, useRef } from "react";
 import s from "./TodoItem.module.scss";
 import sprite from "../../assets/icons/sprite.svg";
-import { useEffect, useState } from "react";
+import { TodoContext, useTodoContext } from "../../context/TodoContext";
 
-const ToDoItem = ({
-  id,
-  title,
-  descr,
-  priority,
-  isDone,
-  changeIsDone,
-  removeTodo,
-}) => {
+// let i = 0;
+
+const ToDoItem = ({ id, title, descr, priority, isDone }) => {
+  const { changeIsDone, removeTodo } = useContext(TodoContext);
+
   const [timer, setTimer] = useState(0);
 
+  const ref = useRef(null);
+  // console.log("ref :>> ", ref);
+
+  // let intervalId = null; // 1
+
   useEffect(() => {
-    let intervalId = null;
     const startTimer = () => {
-      intervalId = setInterval(() => {
+      ref.current = setInterval(() => {
         setTimer((prev) => prev + 1);
       }, 1000);
+      // console.log("initervalId_useEffect :>> ", intervalId);
     };
 
-    startTimer();
+    // startTimer();
 
     return () => {
-      clearInterval(intervalId);
+      clearInterval(ref.current);
     };
     // eslint-disable-next-line
   }, []);
+
+  // useEffect(() => {
+  //   i++;
+  //   ref.current = "useEffect-" + i;
+  // }, [timer]);
+
+  // console.log("intervalId :>> ", intervalId);
 
   return (
     <li className={s.toDoItem}>
@@ -50,6 +59,14 @@ const ToDoItem = ({
         <svg>
           <use href={sprite + "#icon-bin2"}></use>
         </svg>
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          clearInterval(ref.current);
+        }}
+      >
+        StopTimer
       </button>
     </li>
   );

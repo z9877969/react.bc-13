@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import shortid from "shortid";
+import { TodoContext, useTodoContext } from "../../context/TodoContext";
 import s from "./TodoForm.module.scss";
 
 export const priorityOptions = {
@@ -9,7 +10,10 @@ export const priorityOptions = {
   DEF: "",
 };
 
-const ToDoForm = ({ addTodo }) => {
+const ToDoForm = () => {
+  // const { addTodo } = useTodoContext();
+  const { addTodo } = useContext(TodoContext);
+
   const [form, setForm] = useState({
     title: "",
     descr: "",
