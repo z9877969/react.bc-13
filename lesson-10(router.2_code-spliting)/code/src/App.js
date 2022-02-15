@@ -1,4 +1,4 @@
-import { Route, NavLink, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CounterPage from "./pages/CounterPage";
 import NewsPage from "./pages/NewsPage";
