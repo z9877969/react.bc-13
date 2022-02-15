@@ -1,0 +1,7 @@
+1) Search into Gallery(location as state)
+2) SinglePage вынести в App
+3) GoBack button (state)
+4) code splitting
+5) 
+
+

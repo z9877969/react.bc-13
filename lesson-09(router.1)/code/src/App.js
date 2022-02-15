@@ -13,6 +13,12 @@ import GalleryPage from "./pages/GalleryPage";
 const TestPage = () => <h1>TestPage</h1>;
 
 const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    
+  }, [isOpen])
+
   return (
     <div className="App">
       <nav>
@@ -55,7 +61,8 @@ const App = () => {
             <CounterPage {...routerProps} initialCounter={100} />
           )}
         />
-        <Route path="/news/:author">``
+        <Route path="/news/:author">
+          ``
           <h1>SingleNewsPage</h1>
         </Route>
         <Route path="/news">
