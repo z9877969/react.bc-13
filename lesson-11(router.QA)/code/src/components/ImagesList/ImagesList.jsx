@@ -27,7 +27,7 @@ const ImagesList = ({ gallery }) => {
             }}
             to={{
               pathname: "/gallery/" + el.id,
-              state: { from: location, 
+              state: { from: location, // locationGallery || homePage
                 // gallery 
             },
             }}

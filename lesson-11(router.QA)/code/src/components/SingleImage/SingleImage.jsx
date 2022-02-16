@@ -38,7 +38,7 @@ const SingleImage = () => {
       <Link
         to={{
           pathname: "/gallery/" + imageId + "/questions",
-          state: { from: location.state.from },
+          state: { from: location.state.from }, // locationGallery
         }}
       >
         Questions
