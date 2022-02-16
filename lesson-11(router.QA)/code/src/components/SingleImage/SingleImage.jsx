@@ -1,16 +1,24 @@
 import { useEffect, useState } from "react";
-import { Link, useHistory, useLocation, useParams } from "react-router-dom";
+import {
+  Link,
+  useNavigate,
+  useLocation,
+  useParams,
+  Route,
+  Outlet,
+} from "react-router-dom";
 import { getSingleImage } from "../../utils/galleryApi";
 import { getTitle } from "../ImagesList/ImagesList";
 
 const SingleImage = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const { imageId } = useParams();
   const [image, setImage] = useState(null);
 
   const handleGoBack = () => {
-    history.push(location.state.from);
+    navigate(location.state?.from);
+    // history.push(location.state.from);
     // history.goBack();
     // history.go(-1);
   };
@@ -36,45 +44,20 @@ const SingleImage = () => {
         alt=""
       />
       <Link
-        to={{
-          pathname: "/gallery/" + imageId + "/questions",
-          state: { from: location.state.from }, // locationGallery
-        }}
+        to={"questions"} // /gallery/6546546 + /questions
+        state={location.state} // locationGallery { from: location }
       >
         Questions
       </Link>
       <Link
-        to={{
-          pathname: "/gallery/" + imageId + "/comments",
-          state: { from: location.state.from },
-        }}
+        to={"comments"}
+        state={location.state} // locationGallery
       >
         Comments
       </Link>
-      {/* <ul>
-        {location.state?.gallery?.map((el, idx) => (
-          <li key={el.id}>
-            <Link
-              style={{
-                display: "inline-block",
-                textDecoration: "none",
-                color: "darkblue",
-                fontSize: "18px",
-                padding: "8px 0",
-              }}
-              to={{
-                pathname: "/gallery/" + el.id,
-                state: {
-                  from: location.state.from,
-                  gallery: location.state?.gallery,
-                },
-              }}
-            >
-              <h3>{`${idx + 1}. ${getTitle(el.pageURL)}`}</h3>
-            </Link>
-          </li>
-        ))}
-      </ul> */}
+      {/* <Route path="questions" element={<h2>Questions</h2>} />
+      <Route path="comments" element={<h2>Comments</h2>} /> */}
+      <Outlet />
     </>
   ) : null;
 };

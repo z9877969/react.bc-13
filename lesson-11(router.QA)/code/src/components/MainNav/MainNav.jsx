@@ -12,31 +12,36 @@ const MainNav = () => {
   return (
     <nav style={navStyles}>
       <NavLink
-        activeStyle={{ color: "green" }}
         to="/"
-        exact
-        style={{ fontSize: "36px" }}
+        exact="true"
+        style={({ isActive }) =>
+          isActive ? { fontSize: "36px", color: "green" } : { fontSize: "36px" }
+        }
+        
       >
         Home
       </NavLink>
       <NavLink
-        activeStyle={{ color: "green" }}
         to="/counter"
-        style={{ fontSize: "36px" }}
+        style={({ isActive }) =>
+          isActive ? { fontSize: "36px", color: "green" } : { fontSize: "36px" }
+        }
       >
         Counter
       </NavLink>
       <NavLink
-        activeStyle={{ color: "green" }}
         to="/news"
-        style={{ fontSize: "36px" }}
+        style={({ isActive }) =>
+          isActive ? { fontSize: "36px", color: "green" } : { fontSize: "36px" }
+        }
       >
         News
       </NavLink>
       <NavLink
-        activeStyle={{ color: "green" }}
         to="/gallery"
-        style={{ fontSize: "36px" }}
+        style={({ isActive }) =>
+          isActive ? { fontSize: "36px", color: "green" } : { fontSize: "36px" }
+        }
       >
         Gallery
       </NavLink>
