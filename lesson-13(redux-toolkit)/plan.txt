@@ -1,0 +1,7 @@
+1. configureStore
+    -reducer
+    -devtools
+2. createAction/createReducer
+3. useDispatch/useSlice
+4. persist
+5. createSlice
