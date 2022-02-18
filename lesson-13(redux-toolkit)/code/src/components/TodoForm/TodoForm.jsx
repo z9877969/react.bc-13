@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import shortid from "shortid";
 import { todoFilterOptions as PRIORITY } from "../../data/todoFilterOptions";
 import { addTodo } from "../../redux/todos/todosActions";
 import s from "./TodoForm.module.scss";
 
 const ToDoForm = ({ addTodoProp }) => {
+  const dispatch = useDispatch();
+
   const [form, setForm] = useState({
     title: "",
     descr: "",
@@ -19,12 +21,7 @@ const ToDoForm = ({ addTodoProp }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newTodo = {
-      ...form,
-      isDone: false,
-      id: shortid.generate(),
-    };
-    addTodoProp(newTodo)
+    dispatch(addTodo(form));
   };
 
   const { title, descr, priority } = form;

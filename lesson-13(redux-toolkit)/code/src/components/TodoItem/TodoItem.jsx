@@ -1,9 +1,11 @@
 import s from "./TodoItem.module.scss";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeTodo } from "../../redux/todos/todosActions";
 import sprite from "../../assets/icons/sprite.svg";
 
-const ToDoItem = ({ id, title, descr, priority, isDone, removeTodo }) => {
+const ToDoItem = ({ id, title, descr, priority, isDone }) => {
+  const dispatch = useDispatch();
+
   return (
     <li className={s.toDoItem}>
       <h3 className={s.title}>{title}</h3>
@@ -23,7 +25,8 @@ const ToDoItem = ({ id, title, descr, priority, isDone, removeTodo }) => {
       <button
         className={s.toDoBtn}
         onClick={() => {
-          removeTodo(id);
+          dispatch(removeTodo(id));
+          // removeTodo(id);
         }}
       >
         <svg>
@@ -34,8 +37,8 @@ const ToDoItem = ({ id, title, descr, priority, isDone, removeTodo }) => {
   );
 };
 
-const mapDispatchToProps = {
-  removeTodo,
-};
+// const mapDispatchToProps = {
+//   removeTodo,
+// };
 
-export default connect(null, mapDispatchToProps)(ToDoItem);
+export default ToDoItem;

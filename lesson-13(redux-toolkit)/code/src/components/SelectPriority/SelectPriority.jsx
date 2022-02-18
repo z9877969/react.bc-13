@@ -1,13 +1,17 @@
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeSelect } from "../../redux/todos/todosActions";
 import { todoFilterOptions as PRIORITY } from "../../data/todoFilterOptions";
 
-const SelectPriority = ({ value, changeSelect }) => {
+const SelectPriority = () => {
+  const dispatch = useDispatch();
+
+  const value = useSelector((state) => state.todos.filter);
+
   return (
     <div>
       <h3 style={{ marginBottom: "10px" }}>Filter priority:</h3>
       <select
-        onChange={(e) => changeSelect(e.target.value)}
+        onChange={(e) => dispatch(changeSelect(e))}
         name="priority"
         value={value}
       >
@@ -20,12 +24,4 @@ const SelectPriority = ({ value, changeSelect }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  value: state.todos.filter,
-});
-
-const mapDispatchToProps = {
-  changeSelect,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SelectPriority);
+export default SelectPriority;

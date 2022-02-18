@@ -1,8 +1,17 @@
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import ToDoItem from "../TodoItem/TodoItem";
 import s from "./TodoList.module.scss";
 
-const ToDoList = ({ todos }) => {
+const getFilteredTodos = ({ items, filter }) => {
+  if (filter === "all") return items;
+  return items.filter((el) => el.priority === filter);
+};
+
+const ToDoList = () => {
+  const { items, filter } = useSelector((state) => state.todos);
+
+  const todos = getFilteredTodos({ items, filter });
+
   return todos.length ? (
     <ul className={s.list}>
       {todos.map(({ title, descr, id, priority, isDone }) => (
@@ -19,18 +28,13 @@ const ToDoList = ({ todos }) => {
   ) : null;
 };
 
-const getFilteredTodos = ({ items, filter }) => {
-  if (filter === "all") return items;
-  return items.filter((el) => el.priority === filter);
-};
+// const mapStateToProps = (state) => {
+//   const items = state.todos.items;
+//   const filter = state.todos.filter;
 
-const mapStateToProps = (state) => {
-  const items = state.todos.items;
-  const filter = state.todos.filter;
+//   return {
+//     todos: getFilteredTodos({ items, filter }),
+//   };
+// };
 
-  return {
-    todos: getFilteredTodos({ items, filter }),
-  };
-};
-
-export default connect(mapStateToProps)(ToDoList);
+export default ToDoList;
