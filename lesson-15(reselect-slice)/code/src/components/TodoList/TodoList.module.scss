@@ -1,0 +1,8 @@
+@import "../../assets//styles/mixins.scss";
+
+.list {
+  @include container-for-list-with-media;
+  padding: 10px;
+  background-color: rgba(253, 249, 5, 0.212);
+
+}
