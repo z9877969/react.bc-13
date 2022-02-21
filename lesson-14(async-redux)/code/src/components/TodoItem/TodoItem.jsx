@@ -1,6 +1,6 @@
 import s from "./TodoItem.module.scss";
 import { useDispatch } from "react-redux";
-import { removeTodo } from "../../redux/todos/todosActions";
+import { removeTodo } from "../../redux/todos/todosOperations";
 import sprite from "../../assets/icons/sprite.svg";
 
 const ToDoItem = ({ id, title, descr, priority, isDone }) => {

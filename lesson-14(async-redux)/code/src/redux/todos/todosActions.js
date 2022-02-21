@@ -1,12 +1,4 @@
 import { createAction } from "@reduxjs/toolkit";
-import shortid from "shortid";
-
-export const addTodo = createAction("todos/add", (dataForm) => {
-  return {
-    payload: { ...dataForm, isDone: false, id: shortid.generate() },
-  };
-});
-export const removeTodo = createAction("todos/remove");
 
 export const changeSelect = createAction("todos/filter", (event) => {
   return {
@@ -14,19 +6,6 @@ export const changeSelect = createAction("todos/filter", (event) => {
   };
 });
 
-// changeSelect(event)
-
-// export const addTodo = (todo) => ({
-//   type: "todos/add",
-//   payload: todo,
-// });
-
-// export const removeTodo = (id) => ({
-//   type: "todos/remove",
-//   payload: id,
-// });
-
-// export const changeSelect = (value) => ({
-//   type: "todos/filter",
-//   payload: value,
-// });
+export const addTodoRequest = createAction("todos/addTodoRequest");
+export const addTodoSuccess = createAction("todos/addTodoSuccess");
+export const addTodoError = createAction("todos/addTodoError");

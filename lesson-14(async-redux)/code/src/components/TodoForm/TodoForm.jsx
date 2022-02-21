@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { connect, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { todoFilterOptions as PRIORITY } from "../../data/todoFilterOptions";
-import { addTodo } from "../../redux/todos/todosActions";
+import { addTodo } from "../../redux/todos/todosOperations";
 import s from "./TodoForm.module.scss";
 
 const ToDoForm = () => {
   const dispatch = useDispatch();
+
+  const isLoading = useSelector((state) => state.todos.isLoading);
 
   const [form, setForm] = useState({
     title: "",
@@ -20,7 +22,8 @@ const ToDoForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addTodo(form));
+
+    dispatch(addTodo({ ...form, isDone: false }));
   };
 
   const { title, descr, priority } = form;
@@ -94,6 +97,7 @@ const ToDoForm = () => {
       <button className={s.submit} type="submit">
         Ok
       </button>
+      {isLoading && <h3>Loading...</h3>}
     </form>
   );
 };

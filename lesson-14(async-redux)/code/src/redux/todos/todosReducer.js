@@ -1,52 +1,57 @@
 import { combineReducers, createReducer } from "@reduxjs/toolkit";
-import { addTodo, removeTodo, changeSelect } from "./todosActions";
+import {
+  changeSelect,
+  addTodoSuccess,
+  addTodoRequest,
+  addTodoError,
+} from "./todosActions";
+import { getTodos, removeTodo } from "./todosOperations";
 
-// const getTodosFromLS = () => JSON.parse(localStorage.getItem("todos")) || [];
-// const setTodoToLS = (todos) =>
-//   localStorage.setItem("todos", JSON.stringify(todos));
-
-const initialItems = []; // getTodosFromLS();
-
-const itemsReducer = createReducer(initialItems, {
-  [addTodo]: (state, { payload }) => {
-    const todos = [...state, payload];
-    // setTodoToLS(todos);
-    return todos;
-  },
-  [removeTodo]: (state, { payload }) => {
-    const todos = state.filter((el) => el.id !== payload);
-    // setTodoToLS(todos);
-    return todos;
-  },
+const itemsReducer = createReducer([], {
+  [addTodoSuccess]: (state, { payload }) => [...state, payload],
+  [getTodos.fulfilled]: (_, { payload }) => payload,
+  [removeTodo.fulfilled]: (state, { payload }) =>
+    state.filter((el) => el.id !== payload),
 });
 
 const filterReducer = createReducer("all", {
   [changeSelect]: (_, { payload }) => payload,
 });
 
-// const itemsReducer = (state = [], { type, payload }) => {
-//   switch (type) {
-//     case "todos/add":
-//       return [...state, payload];
-//     case "todos/remove":
-//       return state.filter((el) => el.id !== payload);
-//     default:
-//       return state;
-//   }
-// };
+const isLoadingReducer = createReducer(false, {
+  [addTodoRequest]: () => true,
+  [addTodoSuccess]: () => false,
+  [addTodoError]: () => false,
+  [getTodos.pending]: () => true,
+  [getTodos.fulfilled]: () => false,
+  [getTodos.rejected]: () => false,
+  [removeTodo.pending]: () => true,
+  [removeTodo.fulfilled]: () => false,
+  [removeTodo.rejected]: () => false,
+});
 
-// const filterReducer = (state = "all", { type, payload }) => {
-//   switch (type) {
-//     case "todos/filter":
-//       return payload;
-//     default:
-//       return state;
-//   }
-// };
+const setError = (_, { payload }) => payload;
+const resetError = () => null;
+
+const errorReducer = createReducer(null, {
+  [addTodoError]: setError,
+  [addTodoRequest]: resetError,
+  [getTodos.rejected]: setError,
+  [getTodos.pending]: resetError,
+  [removeTodo.rejected]: setError,
+  [removeTodo.pending]: resetError,
+});
 
 const todosReducer = combineReducers({
   items: itemsReducer,
   filter: filterReducer,
+  isLoading: isLoadingReducer,
+  error: errorReducer,
 });
 
 export default todosReducer;
+
+
+// slice -> {reducer, actions}
+
+
