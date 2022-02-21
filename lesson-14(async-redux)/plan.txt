@@ -1,0 +1,6 @@
+1. структура запросов(request, success, error)
+2. решение запросов для библиотеки управления состояния - middlewares, redux-thunk
+3. logger - ?
+4. operation
+5. createAsyncThunk
+5. createSlice
