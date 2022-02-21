@@ -17,7 +17,6 @@ const todosPersistConfig = {
   key: "items",
   version: 1,
   storage,
-  // whitelist: ["items"]
   blacklist: ["filter"],
 };
 
@@ -34,23 +33,9 @@ const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  devTools: process.env.NODE_ENV === "development", // true
+  devTools: process.env.NODE_ENV === "development",
 });
 
 export const persistor = persistStore(store);
 
 export default store;
-
-// import { createStore, combineReducers } from "redux";
-// import { composeWithDevTools } from "@redux-devtools/extension";
-// import counterReducer from "./counter/counterReducer";
-// import todosReducer from "./todos/todosReducer";
-
-// const rootReducer = combineReducers({
-//   counter: counterReducer,
-//   todos: todosReducer,
-// });
-
-// const store = createStore(rootReducer, composeWithDevTools());
-
-// export default store;
