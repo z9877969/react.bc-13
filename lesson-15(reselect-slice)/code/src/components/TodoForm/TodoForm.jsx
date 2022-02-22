@@ -2,12 +2,13 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { todoFilterOptions as PRIORITY } from "../../data/todoFilterOptions";
 import { addTodo } from "../../redux/todos/todosOperations";
+import { getIsLoadingTodos } from "../../redux/todos/todosSelectors";
 import s from "./TodoForm.module.scss";
 
 const ToDoForm = () => {
   const dispatch = useDispatch();
 
-  const isLoading = useSelector((state) => state.todos.isLoading);
+  const isLoading = useSelector(getIsLoadingTodos);
 
   const [form, setForm] = useState({
     title: "",

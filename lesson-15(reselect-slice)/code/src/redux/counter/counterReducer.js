@@ -7,17 +7,4 @@ const counterReducer = createReducer(50, {
   [actionReset]: (_, action) => action.payload,
 });
 
-// const counterReducer = (state = 50, action) => {
-//   switch (action.type) {i
-//     case "counter/plus":
-//       return state + action.payload;
-//     case "counter/minus":
-//       return state - action.payload;
-//     case "counter/reset":
-//       return action.payload;
-//     default:
-//       return state;
-//   }
-// };
-
 export default counterReducer;

@@ -4,15 +4,18 @@ import {
   getTodosApi,
   removeTodoApi,
 } from "../../utils/firebaseApi";
-import { addTodoRequest, addTodoSuccess, addTodoError } from "./todosActions";
 
-export const addTodo = (todo) => (dispatch) => {
-  dispatch(addTodoRequest()); 
-
-  addTodoApi(todo)
-    .then((data) => dispatch(addTodoSuccess(data)))
-    .catch((err) => dispatch(addTodoError(err.message)));
-};
+export const addTodo = createAsyncThunk(
+  "todos/addTodo",
+  async (todo, { rejectWithValue }) => {
+    try {
+      const newTodo = await addTodoApi(todo);
+      return newTodo;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
 export const getTodos = createAsyncThunk("todos/get", async (_, thunkApi) => {
   try {

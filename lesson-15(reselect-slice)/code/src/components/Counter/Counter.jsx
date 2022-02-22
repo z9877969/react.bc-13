@@ -1,14 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
 import s from "./Counter.module.css";
 import {
-  actionMinus,
   actionPlus,
+  actionMinus,
   actionReset,
-} from "../../redux/counter/counterActions";
+} from "../../redux/counter/counterSlice";
+import { getCounter } from "../../redux/counter/counterSelectors";
 
 const Counter = () => {
   const dispatch = useDispatch();
-  const counter = useSelector((state) => state.counter);
+  const counter = useSelector(getCounter);
 
   return (
     <div className={s.container}>
@@ -24,14 +25,14 @@ const Counter = () => {
           -
         </button>
         <button
-          onClick={() => dispatch(actionReset(50))}
+          onClick={() => dispatch(actionReset(100))}
           className={s.btn}
           type="button"
         >
           100
         </button>
         <button
-          onClick={() => dispatch(actionPlus(35))}
+          onClick={() => dispatch(actionPlus(35))} // {type: "counter/actionPlus", payload: 35}
           className={s.btn}
           type="button"
         >
