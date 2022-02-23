@@ -3,12 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { todoFilterOptions as PRIORITY } from "../../data/todoFilterOptions";
 import { addTodo } from "../../redux/todos/todosOperations";
 import { getIsLoadingTodos } from "../../redux/todos/todosSelectors";
+import { langOptions } from "../../assets/options/langOptions";
 import s from "./TodoForm.module.scss";
+import { getLang } from "../../redux/lang/langSelectors";
 
 const ToDoForm = () => {
   const dispatch = useDispatch();
 
   const isLoading = useSelector(getIsLoadingTodos);
+  const lang = useSelector(getLang);
 
   const [form, setForm] = useState({
     title: "",
@@ -28,11 +31,17 @@ const ToDoForm = () => {
   };
 
   const { title, descr, priority } = form;
+  const {
+    title: titleOpts,
+    descr: descrOpts,
+    submit: submitOpts,
+    priority: priorityOpts,
+  } = langOptions.formOptions;
 
   return (
     <form className={s.form} onSubmit={handleSubmit}>
       <label className={s.label}>
-        <span> Title </span>
+        <span> {titleOpts[lang]} </span>
         <input
           className={s.input}
           onChange={handleChange}
@@ -42,7 +51,7 @@ const ToDoForm = () => {
         />
       </label>
       <label className={s.label}>
-        <span> Description </span>
+        <span> {descrOpts[lang]} </span>
         <textarea
           className={`${s.input} ${s.textarea}`}
           type="text"
@@ -63,7 +72,7 @@ const ToDoForm = () => {
             checked={PRIORITY.LOW === priority}
           />
           <label htmlFor="low" className={`${s.label} ${s.radio}`}>
-            <span> Low </span>
+            <span> {priorityOpts[lang].low} </span>
           </label>
         </div>
         <div>
@@ -77,7 +86,7 @@ const ToDoForm = () => {
             checked={PRIORITY.MEDIUM === priority}
           />
           <label htmlFor="medium" className={`${s.label} ${s.radio}`}>
-            <span> Medium </span>
+            <span> {priorityOpts[lang].medium} </span>
           </label>
         </div>
         <div>
@@ -91,12 +100,12 @@ const ToDoForm = () => {
             checked={PRIORITY.HIGH === priority}
           />
           <label htmlFor="high" className={`${s.label} ${s.radio}`}>
-            <span> High </span>
+            <span> {priorityOpts[lang].high} </span>
           </label>
         </div>
       </div>
       <button className={s.submit} type="submit">
-        Ok
+        {submitOpts[lang]}
       </button>
       {isLoading && <h3>Loading...</h3>}
     </form>

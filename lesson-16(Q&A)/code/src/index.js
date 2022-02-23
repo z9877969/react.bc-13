@@ -16,3 +16,6 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+console.log(window.history);
+console.log(window.location);
