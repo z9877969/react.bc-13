@@ -7,8 +7,12 @@ import MainNav from "./components/MainNav/MainNav";
 // import GalleryPage from "./pages/GalleryPage";
 // import SingleImage from "./components/SingleImage/SingleImage";
 
-const HomePage = lazy(() => import("./pages/HomePage" /* webpackChunkName: "home-page" */));
-const CounterPage = lazy(() => import("./pages/CounterPage" /* webpackChunkName: "counter-page" */));
+const HomePage = lazy(() =>
+  import("./pages/HomePage" /* webpackChunkName: "home-page" */)
+);
+const CounterPage = lazy(() =>
+  import("./pages/CounterPage" /* webpackChunkName: "counter-page" */)
+);
 const NewsPage = lazy(() => import("./pages/NewsPage"));
 const GalleryPage = lazy(() => import("./pages/GalleryPage"));
 const SingleImage = lazy(() => import("./components/SingleImage/SingleImage"));
@@ -36,8 +40,8 @@ const App = () => {
             <GalleryPage />
           </Route>
           {/* <Route path="/not-found">
-          <h1>Not found</h1>
-        </Route> */}
+            <h1>Not found</h1>
+          </Route> */}
           <Redirect to="/" />
         </Switch>
       </Suspense>
