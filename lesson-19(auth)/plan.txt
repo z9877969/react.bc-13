@@ -1,0 +1,17 @@
+1. client - server
+2. token,
+3. register/login user
+4. get data for auth user 
+5. logout
+
+
+
+  "rules": {
+    "users": {
+      "$uid": {
+        ".read": "auth !== null && auth.uid === $uid",
+        ".write": "auth !== null && auth.uid === $uid"
+      }
+    }
+  }
+}
