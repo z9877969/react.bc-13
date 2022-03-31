@@ -1,0 +1,62 @@
+@import "../../assets/styles/mixins.scss";
+
+.form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 15px;
+  background-color: rgb(197, 202, 212);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+}
+
+.label:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.input {
+  font-size: 20px;
+  background-color: rgb(235, 214, 214);
+}
+
+.textarea {
+  resize: none;
+  height: 80px;
+}
+
+.labelWrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
+  margin-bottom: 10px;
+}
+
+.input[type="radio"] {
+  @include visually-hidden;
+}
+
+.radio > span {
+  display: inline-block;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  border: 1px solid #212121;
+}
+
+.input:checked + .radio {
+  background-color: green;
+}
+
+.submit {
+  display: block;
+  padding: 10px 40px;
+  font-size: 20px;
+  background-color: rgb(134, 89, 83);
+  color: bisque;
+  border: none;
+  border-radius: 4px;
+  margin: 0 auto;
+}

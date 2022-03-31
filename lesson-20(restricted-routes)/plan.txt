@@ -1,0 +1,15 @@
+1. token persist (with/without)
+2. logout
+3. restricted-routes
+4. error handler
+
+{
+    "rules": {
+    "users": {
+      "$uid": {
+        ".read": "auth !== null && auth.uid === $uid",
+        ".write": "auth !== null && auth.uid === $uid"
+      }
+    }
+  }
+}
